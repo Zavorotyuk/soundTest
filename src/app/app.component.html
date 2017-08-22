@@ -1,10 +1,30 @@
 <div class="container">
+
+  <div class="header" *ngIf="user">
+
+    <div class="header-name" *ngIf="user.name">
+      {{user.name}}
+    </div>
+
+    <div class="header-city" *ngIf="user.city">
+      {{user.city}}
+    </div>
+
+    <div class="header-image" *ngIf="user.pictures">
+      <img [src]="user.pictures.medium" />
+    </div>
+
+  </div>
+
+
   <div class="content-block">
     <div class="cloudcasts" *ngFor="let cloudcast of cloudcasts">
-      <iframe width="100%" height="120" [src]="getFrameUrl(cloudcast.key)" frameborder="0"></iframe>
+      <iframe width="100%" height="120" [src]="getMiCloudFrameUrl(cloudcast.key)" frameborder="0"></iframe>
     </div>
   </div>
   <div class="content-block">
-    right block
+    <div class="soundcloudcasts" *ngFor="let soundcloudcast of soundcloudcasts">
+      <iframe width="100%" height="450" scrolling="no" frameborder="no" [src]="getSoundCloudcastsFrameUrl(soundcloudcast.id)"></iframe>
+    </div>
   </div>
 </div>
